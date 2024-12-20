@@ -1,0 +1,10 @@
+virtualenv -p python3 .venv (pour creer un environnement virtuel en python losqu'on a installer virtualenv)
+pip install virtualenv
+(apres on active notre environnement) .venv\Scripts\activate  
+
+(par le suite on intallera flask) pip install Flask
+
+flask --app app run  (commande pour executer notre fichier et avoir l'URl dans le terminal pour le navigateur) (le deuxiemme app c'est le nom du fichier sans extension)
+
+
+https://www.flaticon.com/fr/chercher?word=nuages  (lien pour le site des images)

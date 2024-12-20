@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='template.css') }}">
+    <title>Historique des Recherches</title>
+</head>
+<body>
+    <nav>
+        <h1>Historique des Recherches</h1>
+        <div class="buttons">
+            <button onclick="window.location.href='/'">
+                <svg height="17" width="17" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
+                    <path d="M310.3 181.6l363.2 338.4a42.6 42.6 0 0 1 0 60.2L310.3 842.4a42.6 42.6 0 0 1-60.2-60.2L573 512 250.1 241.8a42.6 42.6 0 0 1 0-60.2 42.6 42.6 0 0 1 60.2 0z"></path>
+                </svg>
+                <span>Retour à la page d'accueil</span>
+            </button>
+        </div>
+    </nav>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ville</th>
+                <th>Date et Heure</th>
+                <th>Température (°C)</th>
+                <th>Humidité (%)</th>
+                <th>Vitesse du Vent (km/h)</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in history %}
+                <tr>
+                    <td>{{ entry.city }}</td>
+                    <td>{{ entry.date_time }}</td>
+                    <td>{{ entry.temperature }}</td>
+                    <td>{{ entry.humidity }}</td>
+                    <td>{{ entry.wind_speed * 3.6 | round(2) }}</td>  <!-- Convertit m/s à km/h -->
+                    <td>{{ entry.description }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button onclick="window.location.href='/download_csv'">
+        <svg height="17" width="17" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
+            <path d="M310.3 181.6l363.2 338.4a42.6 42.6 0 0 1 0 60.2L310.3 842.4a42.6 42.6 0 0 1-60.2-60.2L573 512 250.1 241.8a42.6 42.6 0 0 1 0-60.2 42.6 42.6 0 0 1 60.2 0z"></path>
+        </svg>
+        <span>Télécharger l'historique en CSV</span>
+    </button>
+
+    <footer>
+        <p>&copy; 2024 Weather App. Tous droits réservés.</p>
+        <p>Contact : <a href="mailto:contact@weatherapp.com">contact@weatherapp.com</a></p>
+    </footer>
+</body>
+</html>

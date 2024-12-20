@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='template.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+    <title>weather data</title>
+</head>
+
+<body>
+    <nav style="text-align: center;">
+        <img src="{{ url_for('static', filename='soleil.jpg') }}" alt="Logo" style="width: 100px; height: 70px; display: block; margin:0"> <h1 style="margin-left: -500px 0;">WEATHER DATA</h1>
+        <div class="buttons">
+            <button onclick="window.location.href='/history'">
+                <svg height="17" width="17" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
+                    <path d="M310.3 181.6l363.2 338.4a42.6 42.6 0 0 1 0 60.2L310.3 842.4a42.6 42.6 0 0 1-60.2-60.2L573 512 250.1 241.8a42.6 42.6 0 0 1 0-60.2 42.6 42.6 0 0 1 60.2 0z"></path>
+                </svg>
+                <span>Historique de vos recherches</span>
+            </button>
+        </div>
+    </nav>
+
+
+    <form action="/" method="post">
+        <label for="city">Nom de la ville à consulter</label>
+        <input type="text" id="city" name="city" placeholder="Entrer la ville" required><br>
+
+        <button type="submit">Rechercher</button>
+    </form>
+
+    <form>
+
+
+        {% if error_message %}
+        <h2 class="error">{{ error_message }}</h2>
+        {% elif weather_info %}
+        <h2>Météo actuelle pour {{ weather_info["name"] }} :</h2>
+
+        {% set icon_code = weather_info["weather"][0]["icon"] %}
+        <div class="icon-container">
+            {% if icon_code == '01d' %} Ensoleillé</span><i class="wi wi-day-sunny"></i><span>
+                {% elif icon_code == '01n' %} <span> Ciel dégagé</span> <i class="wi wi-night-clear"></i>
+                {% elif icon_code == '02d' %}<span> Partiellement nuageux</span> <i class="wi wi-day-cloudy"></i>
+                {% elif icon_code == '02n' %} <span> Nuageux</span> <i class="wi wi-night-cloudy"></i>
+                {% elif icon_code == '03d' or icon_code == '03n' %} <span> Nuageux</span> <i class="wi wi-cloud"></i>
+                {% elif icon_code == '04d' or icon_code == '04n' %}<span> Très nuageux</span><i
+                    class="wi wi-cloudy"></i>
+                {% elif icon_code == '09d' or icon_code == '09n' %} <span> Averses</span> <i class="wi wi-showers"></i>
+                {% elif icon_code == '10d' %} <span> Pluie</span> <i class="wi wi-day-rain"></i>
+                {% elif icon_code == '10n' %} <span> Pluie nocturne</span> <i class="wi wi-night-rain"></i>
+                {% elif icon_code == '11d' or icon_code == '11n' %}<span> Orage</span><i class="wi wi-thunderstorm"></i>
+                {% elif icon_code == '13d' or icon_code == '13n' %} <span> Neige</span><i class="wi wi-snow"></i>
+                {% elif icon_code == '50d' or icon_code == '50n' %}<span> Brouillard</span><i class="wi wi-fog"></i>
+                {% else %}
+                <span> Inconnu</span><i class="wi wi-na"></i>
+                {% endif %}
+        </div>
+
+
+
+        <label for="temperature">Température</label>
+        <input type="text" id="temperature" name="temperature" value='{{ weather_info["main"]["temp"] }}°C'
+            readonly><br>
+
+        <label for="feels_like">Humidité</label>
+        <input type="text" id="feels_like" name="feels_like" value='{{ weather_info["main"]["humidity"] }}%'
+            readonly><br>
+
+        <label for="Vitesse_vent">Vitesse du vent</label>
+        <input type="text" id="Vitesse_vent" name="Vitesse_vent" value='{{ weather_info["wind"]["speed"] * 3.6 }} km/h'
+            readonly><br>
+
+        <label for="conditions">Description</label>
+        <input type="text" id="description" name="description" value='{{ weather_info["weather"][0]["description"] }}'
+        readonly><br>
+        {% endif %}
+    </form>
+
+    <footer>
+        <p>&copy; 2024 Weather App. Tous droits réservés.</p>
+        <p>Contact : <a href="mailto:contact@weatherapp.com">contact@weatherapp.com</a></p>
+    </footer>
+
+</body>
+
+</html>

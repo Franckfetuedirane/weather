@@ -1,0 +1,58 @@
+[
+    {
+        "city": "douala",
+        "date_time": "2024-12-18 09:37:45",
+        "temperature": 30.95,
+        "humidity": 61,
+        "wind_speed": 0.5,
+        "description": "broken clouds"
+    },
+    {
+        "city": "bandjoun",
+        "date_time": "2024-12-18 09:41:16",
+        "temperature": 24.57,
+        "humidity": 32,
+        "wind_speed": 1.33,
+        "description": "broken clouds"
+    },
+    {
+        "city": "barcelone",
+        "date_time": "2024-12-18 09:42:14",
+        "temperature": 10.99,
+        "humidity": 69,
+        "wind_speed": 1.34,
+        "description": "scattered clouds"
+    },
+    {
+        "city": "virginia",
+        "date_time": "2024-12-18 09:42:57",
+        "temperature": 7.22,
+        "humidity": 95,
+        "wind_speed": 1.54,
+        "description": "overcast clouds"
+    },
+    {
+        "city": "ebolowa",
+        "date_time": "2024-12-18 11:15:22",
+        "temperature": 30.45,
+        "humidity": 50,
+        "wind_speed": 0.85,
+        "description": "overcast clouds"
+    },
+    {
+        "city": "bafoussam",
+        "date_time": "2024-12-18 11:18:08",
+        "temperature": 26.9,
+        "humidity": 27,
+        "wind_speed": 1.84,
+        "description": "broken clouds"
+    },
+    {
+        "city": "Washington",
+        "date_time": "2024-12-18 11:42:43",
+        "temperature": -1.08,
+        "humidity": 100,
+        "wind_speed": 1.47,
+        "description": "snow"
+    }
+]
